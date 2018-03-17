@@ -35,6 +35,8 @@ def topic_edit(id):
     if request.method == "GET":
         return render_template("topic_update.html", post=post_store.get_by_id(id))
     else:
-        updated_post = models.Post(request.form["title"], request.form["content"])
-        post_store.update(updated_post)
+        post_to_update = post_store.get_by_id(id)
+        post_to_update.title = request.form["title"]
+        post_to_update.content = request.form["content"]
+        post_store.update(post_to_update)
         return redirect(url_for("home"))
