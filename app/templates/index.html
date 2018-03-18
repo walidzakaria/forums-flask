@@ -45,11 +45,11 @@
                 {% for post in posts %}
                 <tr>
                     <td>
-                        <a href="{{ url_for("topic_view", id = post.id) }}">{{ post.title }}</a>
+                        <a href="{{ url_for("topic_show", id = post.id) }}">{{ post.title }}</a>
                     </td>
 
                     <td>
-                        <a href="{{ url_for("topic_edit", id = post.id) }}">edit</a>
+                        <a href="{{ url_for("topic_update", id = post.id) }}">edit</a>
                     </td>
 
                     <td>
