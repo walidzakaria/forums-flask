@@ -25,8 +25,8 @@ def topic_add_api():
 @app.route("/api/topic/delete/<int:id>", methods=["DELETE"])
 def topic_delete_api(id):
     try:
-        result = post_store.delete(id)
-        result = jsonify(result.__dict__())
+        post_store.delete(id)
+        result = jsonify({"message": "Item deleted successfully!"})
     except ValueError:
         result = abort(404, f"topic with id: {id} doesn't exist!")
 
