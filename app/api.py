@@ -28,9 +28,7 @@ def topic_delete_api(id):
         result = post_store.delete(id)
         result = jsonify(result.__dict__())
     except ValueError:
-        result = abort(400, f"topic with id: {id} doesn't exist!")
-    except AttributeError:
-        result = abort(400, f"topic with id: {id} doesn't exist")
+        result = abort(404, f"topic with id: {id} doesn't exist!")
 
     return result
 
@@ -41,7 +39,7 @@ def topic_show_api(id):
     try:
         result = jsonify(post_to_show.__dict__())
     except AttributeError:
-        result = abort(400, f"topic with id: {id} doesn't exist")
+        result = abort(404, f"topic with id: {id} doesn't exist")
 
     return result
 
@@ -56,7 +54,7 @@ def topic_update_api(id):
         post_store.update(topic_to_update)
         result = jsonify(topic_to_update.__dict__())
     except AttributeError:
-        result = abort(400, f"topic with id: {id} doesn't exist")
+        result = abort(404, f"topic with id: {id} doesn't exist")
     except KeyError:
         result = abort(400, f"couldn't parse the request data")
 
