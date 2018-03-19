@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Topic Update</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="{{ url_for("topic_update", id=post.id) }}" method="post">
-        <input type="text" name="title" value="{{ post.title }}"/>
+    <form action="{{ url_for("topic_update", id=post.id)}}" method="post">
+        <input type="text" id="{{ post.id }}" name="title" value="{{ post.title }}"/>
         <input type="text" name="content" value="{{ post.content }}"/>
-        <input type="submit" value="Save"/>
+        <input type="submit" id="submit_button" value="Edit"/>
     </form>
 </body>
 </html>
+
+<script>
+
+    $(function () {
+        $("form").submit(function (event) {
+            event.preventDefault();
+            var topicId = $("input[name='title']").attr('id');
+            var topicTitle = $("input[name='title']").val();
+            var topicContent = $("input[name='content']").val();
+
+            var topicData = {
+                "title": topicTitle,
+                "content": topicTitle
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: "/api/topic/update/"+topicId,
+                data: JSON.stringify(topicData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function ()
+                {
+                    alert("Updated topic successfully!");
+                    window.location.href = "/";
+                }
+            });
+        });
+    });
+</script>
