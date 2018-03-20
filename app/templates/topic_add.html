@@ -13,35 +13,5 @@
 </body>
 </html>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-
-<script>
-
-    $(function () {
-        $("form").submit(function (event) {
-            event.preventDefault();
-            var topicTitle = $("input[name='title']").val();
-            var topicContent = $("input[name='content']").val();
-
-            var topicData = {
-                "title": topicTitle,
-                "content": topicTitle
-            };
-            $.ajax({
-                type: "POST",
-                url: "/api/topic/add",
-                data: JSON.stringify(topicData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function ()
-                {
-                    alert("added topic successfully!");
-                    window.location.href = "/";
-                }
-            });
-        });
-    });
-</script>
+<script src="static/jquery-3.3.1.min.js"></script>
+<script src="static/topic.add.js"></script>
