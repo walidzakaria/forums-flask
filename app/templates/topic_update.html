@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Topic Update</title>
-    <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
 </head>
 <body>
     <form action="{{ url_for("topic_update", id=post.id)}}" method="post">
@@ -15,6 +12,11 @@
     </form>
 </body>
 </html>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 
 <script>
 
@@ -27,7 +29,7 @@
 
             var topicData = {
                 "title": topicTitle,
-                "content": topicTitle
+                "content": topicContent
             };
 
             $.ajax({
