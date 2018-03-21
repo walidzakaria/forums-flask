@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Forums Workshop</title>
     <link rel="stylesheet" href="static/style.css">
+    <script src="static/jquery-3.3.1.min.js"></script>
+    <script src="static/main.js"></script>
 </head>
 
 <body>
@@ -21,7 +23,7 @@
     </div>
 
     <div class="content">
-        <a href="/topic/add">Create</a>
+        <a class="add-topic" href="/topic/add">Create</a>
 
         <table>
 
@@ -47,9 +49,14 @@
         </table>
     </div>
 
+    <div class="other-pages"></div>
 </body>
 
 </html>
+<script>
+    $('a').on('click', function (e) {
+        e.preventDefault();
+    });
 
-<script src="static/jquery-3.3.1.min.js"></script>
-<script src="static/topic.show.all.js"></script>
+
+</script>
