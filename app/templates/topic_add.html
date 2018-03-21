@@ -1,47 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Topic Add</title>
-</head>
-<body>
-    <form action="{{ url_for("topic_add")}}" method="post">
-        <input type="text" name="title"/>
-        <input type="text" name="content"/>
-        <input type="submit" id="submit_button" value="Create"/>
-    </form>
-</body>
-</html>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+<h2>Topic Add</h2>
+<form>
+    <input type="text" name="title"/>
+    <input type="text" name="content"/>
+    <input type="submit" id="submit_button" value="Create"/>
+</form>
 
-<script>
 
-    $(function () {
-        $("form").submit(function (event) {
-            event.preventDefault();
-            var topicTitle = $("input[name='title']").val();
-            var topicContent = $("input[name='content']").val();
 
-            var topicData = {
-                "title": topicTitle,
-                "content": topicContent
-            };
-            $.ajax({
-                type: "POST",
-                url: "/api/topic/add",
-                data: JSON.stringify(topicData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function ()
-                {
-                    alert("added topic successfully!");
-                    window.location.href = "/";
-                }
-            });
-        });
-    });
-</script>
+<script src="static/topic.create.js"></script>
