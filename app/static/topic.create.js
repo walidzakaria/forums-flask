@@ -6,7 +6,7 @@ $(function () {
 
             var topicData = {
                 "title": topicTitle,
-                "content": topicTitle
+                "content": topicContent
             };
             $.ajax({
                 type: "POST",
@@ -16,7 +16,7 @@ $(function () {
                 dataType: "json",
                 success: function ()
                 {
-                    alert("added topic successfully!");
+                    alert("topic added successfully!");
                     window.location.href = "/";
                 }
             });

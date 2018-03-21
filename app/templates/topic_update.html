@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Topic Update</title>
-</head>
-<body>
-    <form action="{{ url_for("topic_update", id=post.id)}}" method="post">
-        <input type="text" id="{{ post.id }}" name="title" value="{{ post.title }}"/>
-        <input type="text" name="content" value="{{ post.content }}"/>
-        <input type="submit" id="submit_button" value="Edit"/>
-    </form>
-</body>
-</html>
+<form class="update-form">
+    <input type="text" name="title"/>
+    <input type="text" name="content"/>
+    <input type="submit" id="submit_button" value="Edit"/>
+    <button id="btnClose" onclick="hideTopic()">Close</button>
+</form>
+
 
 <script src="static/jquery-3.3.1.min.js"></script>
 <script src="static/topic.update.js"></script>
