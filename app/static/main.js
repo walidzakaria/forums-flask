@@ -15,7 +15,7 @@ function arrayToTable(tableData) {
         var row2 = $('<tr></tr>');
         row1.append($('<td><a class="view-topic" id="'+rowData.id+'" href="topic/show/'+rowData.id+'">'+rowData.title+'</a></td>'));
         row1.append($('<td><a class="update-topic" id="'+rowData.id+'" href="topic/update/'+rowData["id"]+'">edit</a></td>'));
-        row1.append($('<td><a href="javascript:deleteTopic('+rowData.id+')">delete</a></td>'));
+        row1.append($('<td><a class="delete-topic" id="'+rowData.id+'" href="#">delete</a></td>'));
         row2.append($('<div class="show-topic" id="'+rowData.id+'"></div>'));
         $('table').append(row1);
         $('table').append(row2);
@@ -38,6 +38,10 @@ $(document).ready(function () {
         } else if (this.className == 'update-topic') {
             callViewTopic(pageRef, topicID);
             updateTopic(topicID);
+        }
+        else if (this.className == 'delete-topic') {
+            deleteTopic(topicID);
+            window.reload(true);
         };
 
     });
