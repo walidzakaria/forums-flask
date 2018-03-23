@@ -5,7 +5,7 @@ from app import app, post_store
 
 @app.route("/api/topic/all")
 def topic_get_all():
-    posts = [post.__dict__() for post in post_store.get_all()]
+    posts = [post.as_dict() for post in post_store.get_all()]
     return jsonify(posts)
 
 
@@ -13,9 +13,10 @@ def topic_get_all():
 def topic_add_api():
     request_data = request.get_json()
     try:
-        new_post = models.Post(request_data["title"], request_data["content"])
+        new_post = models.Post(title=request.form["title"], content=request.form["content"])
         post_store.add(new_post)
-        result = jsonify(new_post.__dict__())
+        print(new_post)
+        result = jsonify(new_post.as_dict())
     except KeyError:
         result = abort(400, f"couldn't parse the request data!")
 
@@ -52,7 +53,7 @@ def topic_update_api(id):
         topic_to_update.title = request_data["title"]
         topic_to_update.content = request_data["content"]
         post_store.update(topic_to_update)
-        result = jsonify(topic_to_update.__dict__())
+        result = jsonify(topic_to_update.as_dict())
     except AttributeError:
         result = abort(404, f"topic with id: {id} doesn't exist")
     except KeyError:
