@@ -1,5 +1,6 @@
 from app import models, db
 
+
 dummy_members = [
     models.Member(name="Mohammed", age=20),
     models.Member(name="Mohammed", age=22),
@@ -22,6 +23,7 @@ dummy_posts = [
 
 
 def seed_stores(member_store, post_store):
+    db.reflect()
     db.drop_all()
     db.create_all()
 
@@ -30,3 +32,4 @@ def seed_stores(member_store, post_store):
 
     for post in dummy_posts:
         post_store.add(post)
+
